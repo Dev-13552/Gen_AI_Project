@@ -54,7 +54,7 @@ async function registerUserController(req, res) {
   res.cookie("token", token, {
     httpOnly: true,
     secure: true,
-    sameSite: none,
+    sameSite: "None",
   });
 
   res.status(201).json({
@@ -111,7 +111,7 @@ async function loginUserController(req, res) {
   res.cookie("token", token, {
     httpOnly: true,
     secure: true,
-    sameSite: none
+    sameSite: "None",
   });
   res.status(200).json({
     success: true,
