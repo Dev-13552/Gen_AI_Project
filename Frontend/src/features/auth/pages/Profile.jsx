@@ -6,7 +6,7 @@ import { logout, updateProfile } from "../services/auth.api";
 import { IoSaveOutline } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import { toast } from "sonner";
-import userLogo from '../../../../public/userLogo.png'
+import userLogo from '../../../userLogo.png'
 const Profile = () => {
   const navItems = [
     { label: "Basic Info", active: true },

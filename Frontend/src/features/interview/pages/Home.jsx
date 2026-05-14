@@ -45,6 +45,7 @@ const Home = () => {
   const handleClick = () => {
     setIsArrowUp((prev) => !prev);
   };
+  
   const handleLogout = async () => {
     try {
       const data = await logout();

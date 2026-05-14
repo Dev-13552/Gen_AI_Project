@@ -8,6 +8,7 @@ async function authUser(req, res, next) {
     const token = req.cookies.token
 
     if (!token) {
+        console.log("Token not provided")
         return res.status(401).json({
             message: "Token not provided."
         })
@@ -18,6 +19,7 @@ async function authUser(req, res, next) {
     })
 
     if (isTokenBlacklisted) {
+        console.log("Token not valid")
         return res.status(401).json({
             message: "token is invalid"
         })
@@ -31,7 +33,7 @@ async function authUser(req, res, next) {
         next()
 
     } catch (err) {
-
+        console.log(err.message)
         return res.status(401).json({
             message: "Invalid token."
         })
