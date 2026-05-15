@@ -7,17 +7,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "npx nodemon server.js",
-    "build": "PUPPETEER_CACHE_DIR=/opt/render/project/src/.cache/puppeteer node node_modules/puppeteer/install.mjs",
-    "postinstall": "PUPPETEER_CACHE_DIR=/opt/render/project/src/.cache/puppeteer node node_modules/puppeteer/install.mjs"
+    "dev": "npx nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@google/genai": "^1.42.0",
+    "@sparticuz/chromium": "^148.0.0",
     "bcryptjs": "^3.0.3",
-    "chrome-aws-lambda": "^10.1.0",
     "cloudinary": "^2.10.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
