@@ -1,11 +1,8 @@
 const { GoogleGenAI } = require("@google/genai");
 const { z } = require("zod");
 const { zodToJsonSchema } = require("zod-to-json-schema");
-const puppeteer = require("puppeteer");
-const fs = require('fs')
-const path = require('path')
-require('dotenv').config()
-
+const puppeteer = require("puppeteer-core");
+const chromium = require("chrome-aws-lambda")
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GOOGLE_GENAI_API_KEY,
@@ -123,31 +120,12 @@ async function generateInterviewReport({
 async function generatePdfFromHtml(htmlContent) {
 
     // --- TEMP DEBUG: remove after fixing ---
-  const expectedPath = puppeteer.executablePath();
-  console.log('Expected Chrome at:', expectedPath);
-  console.log('File exists:', fs.existsSync(expectedPath));
-
-  // Walk the cache dir to see what actually downloaded
-  const cacheDir = '/opt/render/.cache/puppeteer';
-  if (fs.existsSync(cacheDir)) {
-    const walk = (dir) => {
-      fs.readdirSync(dir).forEach(f => {
-        const full = path.join(dir, f);
-        console.log(full);
-        if (fs.statSync(full).isDirectory()) walk(full);
-      });
-    };
-    walk(cacheDir);
-  } else {
-    console.log('Cache dir does not exist at all');
-  }
-  // --- END DEBUG ---
 
   const browser = await puppeteer.launch({
-  executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(),
-  headless: true,
-  args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-});
+    args: chromium.args,
+    executablePath: await chromium.executablePath,
+    headless: chromium.headless,
+  });
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 

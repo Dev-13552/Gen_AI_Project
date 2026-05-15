@@ -17,6 +17,7 @@
   "dependencies": {
     "@google/genai": "^1.42.0",
     "bcryptjs": "^3.0.3",
+    "chrome-aws-lambda": "^10.1.0",
     "cloudinary": "^2.10.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
@@ -27,7 +28,7 @@
     "multer": "^2.0.2",
     "nodemailer": "^8.0.7",
     "pdf-parse": "^2.4.5",
-    "puppeteer": "^24.37.5",
+    "puppeteer-core": "^25.0.2",
     "razorpay": "^2.9.6",
     "zod": "^3.25.76",
     "zod-to-json-schema": "^3.25.1"
