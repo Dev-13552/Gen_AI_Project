@@ -3,15 +3,6 @@ const { z } = require("zod");
 const { zodToJsonSchema } = require("zod-to-json-schema");
 const puppeteer = require("puppeteer");
 
-const fs = require('fs');
-const path = '/var/www/.cache/puppeteer';
-
-function ensureCacheDirectory() {
-    if (!fs.existsSync(path)) {
-        fs.mkdirSync(path, { recursive: true });
-        console.log('Cache directory created.');
-    }
-}
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GOOGLE_GENAI_API_KEY,
@@ -127,10 +118,9 @@ async function generateInterviewReport({
 }
 
 async function generatePdfFromHtml(htmlContent) {
-    ensureCacheDirectory();
   const browser = await puppeteer.launch({
+    executablePath: puppeteer.executablePath(),
         headless: true,
-        executablePath: '/usr/bin/google-chrome-stable',
         userDataDir: path,
     });
   const page = await browser.newPage();
