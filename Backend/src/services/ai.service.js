@@ -4,6 +4,7 @@ const { zodToJsonSchema } = require("zod-to-json-schema");
 const puppeteer = require("puppeteer");
 const fs = require('fs')
 const path = require('path')
+require('dotenv').config()
 
 
 const ai = new GoogleGenAI({
@@ -143,9 +144,9 @@ async function generatePdfFromHtml(htmlContent) {
   // --- END DEBUG ---
 
   const browser = await puppeteer.launch({
-  executablePath: puppeteer.executablePath(),
+  executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(),
   headless: true,
-  args: ["--no-sandbox", '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+  args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
 });
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle0" });
