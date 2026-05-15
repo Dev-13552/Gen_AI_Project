@@ -122,10 +122,10 @@ async function generatePdfFromHtml(htmlContent) {
     // --- TEMP DEBUG: remove after fixing ---
 
   const browser = await puppeteer.launch({
-    args: chromium.args,
-    executablePath: await chromium.executablePath,
-    headless: chromium.headless,
-  });
+  args: chromium.args,
+  executablePath: await chromium.executablePath(),
+  headless: true,
+});
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
