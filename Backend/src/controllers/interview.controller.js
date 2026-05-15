@@ -39,6 +39,8 @@ async function generateInterViewReportController(req, res) {
       interviewReport,
     });
   } catch (error) {
+    console.log(error)
+
     res.status(500).json({
       success: false,
       message: error.message,
@@ -72,6 +74,8 @@ async function getInterviewReportByIdController(req, res) {
       interviewReport,
     });
   } catch (error) {
+    console.log(error)
+
     res.status(500).json({
       success: false,
       message: error.message,
@@ -98,6 +102,8 @@ async function getAllInterviewReportsController(req, res) {
       interviewReports,
     });
   } catch (error) {
+    console.log(error)
+
     res.status(500).json({
       success: false,
       message: error.message,
@@ -137,6 +143,7 @@ async function generateResumePdfController(req, res) {
 
     res.send(pdfBuffer);
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       success: false,
       message: error.message,
