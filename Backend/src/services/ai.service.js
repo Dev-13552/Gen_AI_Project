@@ -119,10 +119,10 @@ async function generateInterviewReport({
 
 async function generatePdfFromHtml(htmlContent) {
   const browser = await puppeteer.launch({
-    executablePath: puppeteer.executablePath(),
-        headless: true,
-        userDataDir: path,
-    });
+  executablePath: puppeteer.executablePath(),
+  headless: true,
+  args: ["--no-sandbox"]
+});
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
