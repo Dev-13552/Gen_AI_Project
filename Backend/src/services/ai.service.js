@@ -103,6 +103,7 @@ async function generateInterviewReport({
                         Resume: ${resume}
                         Self Description: ${selfDescription}
                         Job Description: ${jobDescription}
+                        Try to generate atleast 6-7 questions.
 `;
 
   const response = await ai.models.generateContent({
