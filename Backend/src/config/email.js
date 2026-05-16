@@ -4,6 +4,7 @@ require("dotenv").config();
  const verifyEmail = async (token, email) => {
   let mailTransporter = nodemailer.createTransport({
     service: "gmail",
+    family: 4,
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS,
