@@ -42,7 +42,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const verifyEmail = async (token, email) => {
   try {
     await resend.emails.send({
-      from: 'uniq5344@gmail.com',
+      from: 'onboarding@resend.dev',
       to: email,
       subject: 'Email Verification',
       text: `Please verify your email: https://gen-ai-project-tau.vercel.app/verify/${token}`,
