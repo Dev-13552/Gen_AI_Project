@@ -119,7 +119,6 @@ async function generateInterviewReport({
 
 async function generatePdfFromHtml(htmlContent) {
 
-    // --- TEMP DEBUG: remove after fixing ---
 
   const browser = await puppeteer.launch({
   args: chromium.args,
