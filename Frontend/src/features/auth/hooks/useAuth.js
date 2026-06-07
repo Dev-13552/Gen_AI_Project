@@ -25,7 +25,8 @@ export const useAuth = () => {
     setLoading(true);
     try {
       const data = await register({ username, email, password });
-      toast.success("Email Verification Sent Successfully")
+      setUser(data.user);
+      toast.success("User registered Successfully")
     } catch (err) {
       toast.error(err?.response?.data?.message)
       throw err;
