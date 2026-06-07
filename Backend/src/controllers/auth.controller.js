@@ -46,7 +46,7 @@ async function registerUserController(req, res) {
     { expiresIn: "1d" },
   );
 
-  await verifyEmail(token, email);
+  // await verifyEmail(token, email);
 
   user.token = token;
   await user.save();
@@ -95,12 +95,12 @@ async function loginUserController(req, res) {
     });
   }
 
-    if(user.isVerified === false) {
-      return res.status(400).json({
-        success: false,
-        message: "Verify your account then login",
-      });
-    }
+    // if(user.isVerified === false) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "Verify your account then login",
+    //   });
+    // }
 
   const token = jwt.sign(
     { id: user._id, username: user.username },
